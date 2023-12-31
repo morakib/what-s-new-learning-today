@@ -1,0 +1,13 @@
+///MAXIMUM ROUNDING CF-891 DIV-3
+--------------------------------
+        string s; cin>>s; 
+        s='0'+s;                              //start e zero add
+        int p=s.size();
+        for(int i=s.size()-1;i>=0;i--)
+        { 
+            if(s[i]>='5') s[i-1]++,p=i;       //finding leftmost >=5                          *****
+        }
+        for(int i=(s[0]=='0');i<s.size();i++) //i initialization awesome                      *****
+        {
+            cout<<(i>=p?'0':s[i]);            //p er theke boro sobi 0,p er ager gulo s[i] e
+        }
