@@ -1,0 +1,13 @@
+/////////upper bound vs lower bound confusion
+---------------------------------------------
+lower bound returns greater or equal of X in the set
+upper bound returns greater than X in the set
+
+//////////  ORDERED SET
+-----------------------
+FINDING kTH ELEMENT OF AN os-->              (*A.find_by_order(x));
+FINDING NUMBER SMALLER THAN x->              (A.order_of_key(x));
+REMOVING ELEMENT                             A.erase(x);
+FINDING UPPER BOUND                          *A.upper_bound(x);
+FINDING LOWER BOUND                          *A.lower_bound(x);
+
