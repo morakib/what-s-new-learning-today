@@ -1,0 +1,113 @@
+///////////nearest smalller valuess
+-----------------------------------
+    stack<pair<int,int>> stk;
+    for(int i=0;i<n;i++){
+        cin>>A[i];
+    }
+    for(int i=0;i<n;i++){
+        while(stk.size() && stk.top().first >= A[i]){
+            stk.pop();
+        }
+        if(stk.size()>0){
+            cout<<stk.top().second<<" ";
+        }else{
+            cout<<0<<" ";
+        }
+        stk.push({A[i],i+1});
+        
+////////increment decrement to check an segment
+----------------------------------------------
+  while(q--){
+        int l,r;
+        cin>>l>>r;
+        h[l]++;          //inc that indx
+        h[r+1]--;        //dec next indx(take extra idx)
+    }
+    
+///////getting hash
+-------------------
+ll getHash(string s,int l){
+    ll ans=0;
+    ll prime=2;ll pwr=1;
+    for(int i=0;i<l;i++){
+        ans=(ans%M+(s[i]*pwr)%M)%M;
+        pwr=(pwr*prime)%M;
+    }
+    return ans%M;
+}
+
+//////////FINDING BORDERS cses
+------------------------------
+void piTable(string s,int l){
+    int len=0,i=1;
+    while(i<l){
+        if(s[i]==s[len]){
+            len++;
+            pi[i]=len;
+            i++;
+        }else{
+            if(len!=0){
+                len=pi[len-1];
+            }else{
+                pi[i]=0;
+                i++;
+            }
+        }
+    }  
+}
+int main(){
+    cin>>s;
+    piTable(s,s.size());
+    int j=pi[s.size()-1];
+    vll result;
+    while(j>0){
+        result.push_back(j);
+        j=pi[j-1];
+    }
+    sort(all(result));
+    for(auto i:result){
+        cout<<i<<" ";
+    }
+    
+///////////////////z FUNCTION
+-----------------------------  
+for (int i = 1, l = 0, r = 0; i < n; i++) {
+        if (i <= r)
+            Z[i] = min(Z[i - l], r - i + 1);
+        while (i + Z[i] < n && S[Z[i]] == S[i + Z[i]])
+            Z[i]++;
+        if (i + Z[i] - 1 > r)
+            l = i, r = i + Z[i] - 1;
+    }
+
+///////////////checking period or not
+-------------------------------------
+for (int i = 0; i < n; i++)
+        if (i + Z[i] >= n)
+            cout << i << ' ';
+    cout << n << '\n';
+
+//////////////WORKING ON MODULO  
+-------------------------------
+
+        priority_queue<pair<ll,int>>pq;
+        for(int i=0;i<n;i++){
+            pq.push({a[i],i});
+        }
+        int q;
+        cin>>q;
+        while(q--){
+            ll m;cin>>m;
+            while(!pq.empty() && pq.top().first>=m){
+                ll first_val=pq.top().first;
+                int index=pq.top().second;
+                pq.pop();
+                first_val%=m;
+                pq.push({first_val,index});
+            }
+        }
+        ll ans[n];
+        while(!pq.empty()){
+            ans[pq.top().second]=pq.top().first;    ///**********************
+            pq.pop();
+        }
