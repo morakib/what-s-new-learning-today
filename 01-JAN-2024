@@ -1,0 +1,96 @@
+///////////TREE (SUBTREE SIZE,LEVEL,DFS)
+---------------------------------------
+const int N=2000006;
+vector<int>adj[N];
+int par[N],level[N],subtree_sz[N];
+void dfs(int child,int parent){
+    par[child]=parent;
+    subtree_sz[child]=1;
+    for(int node:adj[child]){
+        level[node]=level[child]+1;
+        dfs(node,child);
+        subtree_sz[child]+=subtree_sz[node];
+    }
+}
+int main(){
+    int n;
+    cin>>n;
+    for(int i=0;i<n-1;i++){
+        int u,v;
+        cin>>u>>v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    level[1]=0;
+    dfs(1,-1);
+}
+
+
+////////DFS 
+-----------
+const int N=1e5+10;
+vector<int> graph[N];
+int visited[N];
+int level[N];
+void bfs(int source){
+    queue<int>q;
+    q.push(source);
+    visited[source]=1;
+    while(!q.empty()){
+       int current_vertex=q.front();
+       q.pop();
+       for(int child:graph[current_vertex]){
+        if(!visited[child]){
+            q.push(child);
+            visited[child]=1;
+            level[child]=level[current_vertex]+1;}}}}
+in main func-->    bfs(1);
+
+
+//////////DSU(NOT OPTIMIZED)-(AT_LLS2_14-6-23)
+---------------------------------------------
+void make_set(int n){
+    for(int i=1;i<=n;i++){
+        parent[i]=i;
+        sz[i]=i;
+    }
+}
+
+int find_set(int u){
+    if(parent[u]==u) return u;
+    return find_set(parent[u]);
+}
+
+void union_set(int u,int v){
+    int a=find_set(u);
+    int b=find_set(v);
+    if(a!=b){
+        parent[b]=a;
+    }
+}
+
+
+//////////DSU(OPTIMIZED)-(AT_LLS2_14-6-23)
+------------------------------------------
+void make_set(int n){
+    for(int i=1;i<=n;i++){
+        parent[i]=i;
+        sz[i]=i;
+    }
+}
+int find_set(int u){
+    if(parent[u]==u) return u;
+    return parent[u]=find_set(parent[u]);    //making all set's representative a single one
+}
+void union_set(int u,int v){
+    int a=find_set(u);
+    int b=find_set(v);
+    if(sz[a]<sz[b]){
+        parent[a]=b;
+        sz[b]+=sz[a];
+    }else{
+        parent[b]=a;
+        sz[a]+=sz[b];
+    }
+}
+
