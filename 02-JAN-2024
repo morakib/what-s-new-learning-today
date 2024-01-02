@@ -1,0 +1,17 @@
+.......CODING TRICKS-> 
+----------------------
+1. possible &= (rem % X == 0 );
+
+2. every number can be represented as multiples of prime ,so if we are given 2 are given two integers a and b,
+   which are the two largest divisors of the number x.
+   here could be 2 possibilities 
+   a=x/p1                  (here p1 is the smallest prime) 
+   b=x/(p1*p1) or b=x/p2   (here p2 is the 2nd smallest or square of the 1st smallest prime number)
+
+3. if n is a square  number and if we multiply wtih another sqr it will also be a sqr,and length of the string is odd so 
+   169,961,196-length of 3
+   13*13*10*10=16900,96100,19600 ,,multiplying with 10's even power
+
+///////////BINARY SEARCH ON ANSWER
+----------------------------------
+
