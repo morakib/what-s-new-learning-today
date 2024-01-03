@@ -1,0 +1,67 @@
+///EVEN-ODD-XOR
+---------------
+
+#include<bits/stdc++.h>
+using namespace std;
+int t,n,a[200005],x;
+int main(){
+	cin>>t;
+	while(t--){
+		x=0; 
+		cin>>n;
+		for(int i=1;i<=n-3;i++){
+			cout<<i<<' ';
+			x^=i;
+		}
+		cout<<(1<<23)<<' '<<(1<<24)<<' ';
+		printf("%d\n",(1<<23)^(1<<24)^x);
+	}
+	
+	return 0;
+}
+
+
+////HOSSAM AND FRIENDS
+----------------------
+
+it can be done by graph problem (adjancency list)
+then iterate over all g[i]
+we can get the max-which means it be helpful to find previus nearest element
+then wee can just normally add all segments
+//input
+for(int i=0;i<M;i++)
+		{
+			int a,b;cin>>a>>b;
+			if(a>b)swap(a,b);
+			G[b].push_back(a);
+		}
+//calculation
+for(int i=1;i<=N;i++)
+		{
+			for(int v:G[i])p=max(p,v);
+			ans+=i-p;
+		}
+
+////i hate 1111
+---------------
+11,111 are unmanagable ,except this all can be done by 
+ 1)11 * a + 111 * b = x  ;0<=a<=b<=n
+ 2)a  = ( x - 111 * b) % 11 = 0
+
+////DIVERSE STRING
+------------------
+
+**guessing something that maximum distinct can be 10 cause 1 2 3 4 5 6 7 8 9 0 and then maximum freq can be alse 10 highest
+** so iterate only 100 
+** TC->N*100=1e5*1e2=1e7(max)
+        for(int i=0;i<=n-1;i+=1){
+            mcll m;
+            ll distinct=0,mx=0;
+            for(int j=i;j<=min(100+i,n-1);j++){
+                if(m[s[j]]==0){
+                    distinct++;
+                }
+                m[s[j]]++;
+                mx=max(mx,m[s[j]]);
+                if(distinct>=mx) ans++;
+                
