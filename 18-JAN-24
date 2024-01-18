@@ -1,0 +1,90 @@
+///////////////////////LONELY NUMBERS///////CF
+#include                  <bits/stdc++.h>
+using                     namespace std;
+#define YES               cout<<"YES\n";
+#define NO                cout<<"NO\n";
+#define ll                long long
+#define nl                <<"\n"
+#define op                cout<<
+#define ip                cin>>
+#define FOR(x,y,z)        for(int i=x;i<=y;i+=z)
+#define arinput(p,x,y,z)  FOR(x,y,z) ip p[i];
+#define all(v)            v.begin(),v.end()
+#define pb(x)             push_back(x)
+typedef pair<ll,ll>       pll;
+typedef vector<pll>       vpll;
+typedef map<ll,ll>        mll;
+typedef vector<ll>        vll;
+#define fastio            ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+const int                 M = 1e9+7;
+const int                 N = 1e6+10;
+#define                   INF (1LL<<62)
+int prme[N],pre[N];
+int main(){
+    //making prime
+    for(int i=2;i<=N;i++){
+        pre[i]=pre[i-1]+(prme[i]==0);
+        if(prme[i]) continue;
+        for(ll j=1ll*i*i;j<=N;j+=i){
+            prme[j]=1;
+        }
+    }
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        int x;
+        cin>>x;
+        cout<<pre[x]-pre[(int)sqrt(x)]+1<<" ";
+    }
+    
+}
+///////////////////////Minimal height Tree//////CF
+#include                  <bits/stdc++.h>
+using                     namespace std;
+#define YES               cout<<"YES\n";
+#define NO                cout<<"NO\n";
+#define ll                long long
+#define nl                <<"\n"
+#define op                cout<<
+#define ip                cin>>
+#define FOR(x,y,z)        for(int i=x;i<=y;i+=z)
+#define arinput(p,x,y,z)  FOR(x,y,z) ip p[i];
+#define all(v)            v.begin(),v.end()
+#define pb(x)             push_back(x)
+typedef pair<ll,ll>       pll;
+typedef vector<pll>       vpll;
+typedef map<ll,ll>        mll;
+typedef vector<ll>        vll;
+#define fastio            ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+const int                 M = 1e9+7;
+const int                 N = 1e6+10;
+#define                   INF (1LL<<62)
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n,d=1,a[200005];
+        map<int,int>mp;
+        for(int i=0;i<n;i++){
+            cin>>a[i];
+        }
+        mp[0]=0;
+        mp[1]=1;
+        for(int i=2;i<n;i++){
+            if(a[i-1]<=a[i]){
+                mp[d]++;
+            }else{
+                if(mp[d-1]!=0){
+                    mp[d-1]--;
+                    mp[d]++;
+                }else{
+                    d++;
+                    mp[d]++;
+                    mp[d-1]--;
+                }
+            }  
+        }
+        cout<<d<<endl;
+    }
+}
