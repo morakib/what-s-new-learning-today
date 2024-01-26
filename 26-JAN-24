@@ -1,0 +1,15 @@
+learned longest common Subsequence
+..................................
+without memoization------>
+int LCS(i,j){
+  if(A[i]=="\0" || A[j]=="\0"){
+    return 0;
+  }
+  if(A[i]==B[j]){
+    return 1+LCS(i+1,j+1);
+  }else{
+    return max(LCS(i+1,j),LCS(i,j+1));
+  }
+}
+TC-2^n
+with DP(and memoiZATION)--->
