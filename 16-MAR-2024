@@ -1,0 +1,11 @@
+    string s;
+		cin>>s;
+			///npos is basically no position
+			//s.find the first position of the string if present else npos 
+			(s.find("666")!=string::npos)?cout<<"YES":cout<<"NO";
+			//s.rfind return the the last occurance starts where?
+			//11666116661
+			//s.find("666")=3
+			//s.rfind("666")=8
+			//s.substring(index,length)
+		}
